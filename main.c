@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
                 run_integral_test();
             } 
             else {
-                printf("Error\n");
+                printf("Error \n");
                 help_info();
             }
 
