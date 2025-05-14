@@ -3,16 +3,16 @@
 
 double t_f1(double x)
 {
-    return x * x * x - x;
+    return x * x + 2;
 }
 
 double t_f2(double x)
 {
-    return 4 / x + 7;
+    return x * 0.5 + 4;
 }
 
 double t_f3(double x)
 {
-    return 20 * x + 2;
+    return -2 * x * x + 8;
 }
 

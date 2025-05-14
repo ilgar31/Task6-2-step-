@@ -6,25 +6,15 @@
 #include "integral.h"
 #include "test_funcs.h"
 
-void help_info(void)
-{
-    printf("Options:\n");
-    printf("  -help             Show help message\n");
-    printf("  -roots            Show roots\n");
-    printf("  -iters            Show iterations\n");
-    printf("  -test -root       Root with test functions\n");
-    printf("  -test -integral   Integral with test functions\n");
-}
-
 // Основная задача
 void my_task(char show_roots, char show_iters)
 {
     const double eps_root = 1e-4;
     const double eps_integral = 5e-4;
 
-    double a1 = 1.0, b1 = 2.0;     // f1 и f3
-    double a2 = 3.5, b2 = 4.5;     // f2 и f3
-    double a3 = 4.5, b3 = 5.5;     // f1 и f2
+    double a1 = 1.0, b1 = 2.0;     // отрезок для f1 и f3
+    double a2 = 3.5, b2 = 4.5;     // отрезок для f2 и f3
+    double a3 = 4.5, b3 = 5.5;     // отрезок для f1 и f2
 
     double x1 = root(f1, f3, a1, b1, eps_root, show_roots, show_iters);
     double x2 = root(f2, f3, a2, b2, eps_root, show_roots, show_iters);
@@ -39,7 +29,17 @@ void my_task(char show_roots, char show_iters)
     printf("Area: %lf\n", total_area);
 }
 
-void run_root_test()
+void help_info(void)
+{
+    printf("Options:\n");
+    printf("  -help             Show help message\n");
+    printf("  -roots            Show roots\n");
+    printf("  -iters            Show iterations\n");
+    printf("  -test -root       Root with test functions\n");
+    printf("  -test -integral   Integral with test functions\n");
+}
+
+void root_test()
 {
     double (*funcs[])(double) = {t_f1, t_f2, t_f3};
 
@@ -60,7 +60,7 @@ void run_root_test()
     printf("root: %lf\n", r);
 }
 
-void run_integral_test()
+void integral_test()
 {
     double (*funcs[])(double) = {t_f1, t_f2, t_f3};
 
@@ -105,10 +105,10 @@ int main(int argc, char *argv[])
             }
 
             if (root_flag) {
-                run_root_test();
+                root_test();
             } 
             else if (int_flag) {
-                run_integral_test();
+                integral_test();
             } 
             else {
                 printf("Error \n");
